@@ -43,12 +43,12 @@ r.getTicker(symbol='btcusd')
 r.getTickerV2(symbol='btcusd')
 
 r.getCandles(	
-    			symbol='btcusd', 
+    		symbol='btcusd', 
              	time_frame='5m'			#optional
             )
 
 r.getTradeHistory(	
-    				symbol='btcusd', 
+    			symbol='btcusd', 
                   	timestamp='', 		#optional 
                   	limit_trades=''		#optional
                  	include_breaks=''	#optional
@@ -94,24 +94,24 @@ p.newOrder(
            	amount='1', 					#required
           	price='30145.01', 				#required
           	side='buy', 					#required
-          	order_type = 'exchange_limit',	#required
+          	order_type = 'exchange_limit',  		#required
           	min_amount = '1',				#optional
            	options = '', 					#optional
-           	stop_price = '30145.01'			#optional
+           	stop_price = '30145.01'				#optional
            	account = ''					#optional
           )
 
 p.cancelOrder(	
-    			order_id='12345', 
+                order_id='12345', 
               	account=''			#optional
              )
 
 p.cancelAllOrders(	
-    				account='' 		#optional
+                    account='' 			#optional
                  )
 
 p.showBalances(
-    			account='',			#optional
+    		account='',			#optional
               	currency=''			#optional
               )
 
@@ -120,3 +120,4 @@ Coming Soon:
 Functions for Transfer/Deposit/Withdraw etc.
 '''
 ```
+
