@@ -20,24 +20,24 @@ class PrivateSession():
         if payload is None:
             payload = {}
             
-        post_url = self.base_url + url_end
+        self.post_url = self.base_url + url_end
         
         # Create payload entry for request and nonce
         payload['request'] = url_end
         payload['nonce'] = str(int(time.time() * 1000))
         
-        b64 = base64.b64encode(json.dumps(payload).encode())
-        signature = hmac.new(self.api_secret, b64, hashlib.sha384).hexdigest()
+        self.b64 = base64.b64encode(json.dumps(payload).encode())
+        self.signature = hmac.new(self.api_secret, self.b64, hashlib.sha384).hexdigest()
         
         post_headers = {'Content-Type': "text/plain",
                         'Content-Length': "0",
                         'X-GEMINI-APIKEY': self.api_key,
-                        'X-GEMINI-PAYLOAD': b64,
-                        'X-GEMINI-SIGNATURE': signature,
+                        'X-GEMINI-PAYLOAD': self.b64,
+                        'X-GEMINI-SIGNATURE': self.signature,
                         'Cache-Control': "no-chache" }
                         
-        response = requests.post(post_url, headers=post_headers)
-        return response.json()
+        self.response = requests.post(self.post_url, headers=post_headers)
+        return self.response.json()
         
     
     def newOrder(self, symbol, amount, price, side, order_type, min_amount=None, options=None, stop_price=None, account=None):

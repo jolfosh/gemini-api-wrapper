@@ -9,8 +9,8 @@ class PublicSession():
             self.base_url = 'https://api.gemini.com'
     
     def apiGET(self, end_point, url_params={}):
-        response = requests.get(self.base_url + end_point, params=url_params)
-        return response.json()
+        self.response = requests.get(self.base_url + end_point, params=url_params)
+        return self.response.json()
     
     
     def getSymbols(self):
