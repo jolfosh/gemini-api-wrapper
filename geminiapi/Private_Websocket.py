@@ -32,8 +32,9 @@ class PrivateWebSocket():
 
     def orderEvents(self, symbolFilter=None, apiSessionFilter=None, eventTypeFilter=None, heartbeat=True):
         self.url_end = '/v1/order/events'
-        self.filters = False
         
+        #   Build URL from request parameters
+        self.filters = False
         if symbolFilter is not None:
             if self.filters == False:
                 self.filters = True
@@ -64,6 +65,7 @@ class PrivateWebSocket():
             else:
                 self.url_end += '&heartbeat=true'
         self.ws_url = self.base_url + self.url_end
+        
         
         self.payload = { 'request': '/v1/order/events',
                     'nonce': int(time.time()*1000) }
